@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body onload="getDay ()">
+    <main>
+      <section>
+        <h1 data-testid="slackUserName" class="name">
+          Slack name : Akbar Badmus
+        </h1>
+        <img
+          class="pic"
+          src="/stageone/akbar.jpg"
+          alt="Akbar Badmus"
+          data-testid="slackDisplayImage"
+        />
+      </section>
+      <section>
+        <!-- day of the week -->
+        <p>Day: <span id="day" data-testid="currentDayOfTheWeek"></span></p>
+        <p>
+          UTC time in millisec:
+          <span data-testid="currentUTCTime" id="time"></span>
+        </p>
+      </section>
+      <section>
+        <!-- Track -->
+        <p >Track: <span data-testid="myTrack">Frontend</span>
+      <section>
+        <!-- /github link-->
+        <span> Github Link: <a href="" data-testid="githubURL" class="link">github</a></span>
+        
+      </section>
+    </main>
+  </body>
+</html>
