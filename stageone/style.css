@@ -4,6 +4,7 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
+  font-size: larger;
 }
 main {
   border-radius: 30px;
@@ -17,4 +18,5 @@ main {
 .pic {
   align-self: center;
   width: 200px;
+  border-radius: 10px;
 }
