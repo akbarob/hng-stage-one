@@ -4,10 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
 
-export const metadata = {
-  title: "HNG stage3 Login",
-  description: "This is the LOGIN page!",
-};
 export default function Login() {
   const session = useSession();
   const router = useRouter();
