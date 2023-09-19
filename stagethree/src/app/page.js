@@ -113,17 +113,13 @@ export default function Home() {
     else setImages(image);
   }, [search]);
 
-  const isTouchDevice = () => {
-    if ("ontouchstart" in typeof window) {
-      return true;
-    }
-    return false;
-  };
-  const backendForDND = isTouchDevice() ? TouchBackend : HTML5Backend;
-
-  // useEffect(() => {
-  //   const backendForDND = isTouchDevice() ? TouchBackend : HTML5Backend;
-  // }, []);
+  // const isTouchDevice = () => {
+  //   if ("ontouchstart" in typeof window) {
+  //     return true;
+  //   }
+  //   return false;
+  // };
+  // const backendForDND = isTouchDevice() ? TouchBackend : HTML5Backend;
 
   const moveImage = (dragIndex, hoverIndex) => {
     const draggedImage = images[dragIndex];
@@ -138,6 +134,7 @@ export default function Home() {
       })
     );
   };
+
   if (session.status === "loading") return <Loading />;
   else if (session.status === "authenticated" || "unauthenticated")
     return (
@@ -188,7 +185,7 @@ export default function Home() {
           />
           <BsSearch color="black" size={25} className="cursor-pointer" />
         </div>
-        <DndProvider backend={backendForDND}>
+        <DndProvider backend={HTML5Backend}>
           <ImageList images={images} moveImage={moveImage} />
         </DndProvider>
       </main>
