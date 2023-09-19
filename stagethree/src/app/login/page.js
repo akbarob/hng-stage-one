@@ -19,7 +19,7 @@ export default function Login() {
     if (session.status === "authenticated") {
       router.push("/");
     }
-  }, [session.status]);
+  }, [session.status, router]);
 
   if (session.status === "loading") return <Loading />;
 

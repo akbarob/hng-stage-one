@@ -101,9 +101,8 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    console.log(session);
     setUser(session?.data?.user);
-  }, [session.status]);
+  }, [session]);
 
   useEffect(() => {
     console.log(search);
@@ -115,13 +114,16 @@ export default function Home() {
   }, [search]);
 
   const isTouchDevice = () => {
-    if ("ontouchstart" in window) {
+    if ("ontouchstart" in typeof window) {
       return true;
     }
     return false;
   };
-
   const backendForDND = isTouchDevice() ? TouchBackend : HTML5Backend;
+
+  // useEffect(() => {
+  //   const backendForDND = isTouchDevice() ? TouchBackend : HTML5Backend;
+  // }, []);
 
   const moveImage = (dragIndex, hoverIndex) => {
     const draggedImage = images[dragIndex];
