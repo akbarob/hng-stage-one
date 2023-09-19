@@ -138,7 +138,7 @@ export default function Home() {
   if (session.status === "loading") return <Loading />;
   else if (session.status === "authenticated" || "unauthenticated")
     return (
-      <main className="flex h-screen flex-col items-center  p-4 md:p-10 gap-6 lg:gap-10 bg-gradient-to-r from-blue-200 via-rose-200 to-sky-500 ">
+      <main className="flex min-h-screen flex-col items-center  p-4 md:p-10 gap-6 lg:gap-10 bg-gradient-to-r from-blue-200 via-rose-200 to-sky-500 ">
         <div className=" flex justify-between lg:block w-full relative">
           <h1 className="text-left font-bold text-2xl md:text-4xl ">
             HNG Image Gallery
