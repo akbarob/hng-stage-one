@@ -4,6 +4,7 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import Connect from "@/utils/db";
+// import toast from "react-hot-toast";
 
 const handler = NextAuth({
   providers: [
@@ -24,6 +25,7 @@ const handler = NextAuth({
               credentials.password,
               user.password
             );
+
             if (isPasswordCorrect) {
               return user;
             } else {
@@ -31,6 +33,7 @@ const handler = NextAuth({
             }
           } else {
             // no user
+
             throw new Error("User does not exsist!!!");
           }
         } catch (err) {
@@ -42,6 +45,8 @@ const handler = NextAuth({
   pages: {
     error: "/login",
   },
+
+  secret: process.env.NEXTAUTH_SECRET,
 });
 
 export { handler as GET, handler as POST };

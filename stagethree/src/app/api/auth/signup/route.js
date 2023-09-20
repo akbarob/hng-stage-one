@@ -2,6 +2,7 @@ import User from "@/Model/User";
 import Connect from "@/utils/db";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+import { signIn } from "next-auth/react";
 
 export async function POST(req) {
   const { email, password } = await req.json();
@@ -13,6 +14,7 @@ export async function POST(req) {
   });
   try {
     await newUser.save();
+
     return new NextResponse("User has been created", {
       status: 201,
     });

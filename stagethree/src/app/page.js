@@ -9,89 +9,7 @@ import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading";
 import { BsSearch } from "react-icons/bs";
-
-const image = [
-  {
-    id: "abcd123",
-    src: "/images/1.jpg",
-    tag: "food",
-  },
-  {
-    id: "zxy123456",
-    src: "/images/2.jpg",
-    tag: "nature",
-  },
-  {
-    id: "8xy12chj6",
-    src: "/images/3.jpg",
-    tag: "nature",
-  },
-  {
-    id: "uxy456",
-    src: "/images/4.jpg",
-    tag: "model",
-  },
-  {
-    id: "asdf123",
-    src: "/images/5.jpg",
-    tag: "nature",
-  },
-  {
-    id: "qwe098",
-    src: "/images/6.jpg",
-    tag: "pet",
-  },
-  {
-    id: "pie367",
-    src: "/images/7.jpg",
-    tag: "football",
-  },
-  {
-    id: "plm353",
-    src: "/images/8.jpg",
-    tag: "car",
-  },
-  {
-    id: "129urt",
-    src: "/images/9.jpg",
-    tag: "football",
-  },
-  {
-    id: "pq0192",
-    src: "/images/10.jpg",
-    tag: "car",
-  },
-  {
-    id: "btf493",
-    src: "/images/11.jpg",
-    tag: "football",
-  },
-  {
-    id: "ghj543",
-    src: "/images/12.jpg",
-    tag: "pet",
-  },
-  {
-    id: "p1o2i3",
-    src: "/images/13.jpg",
-    tag: "food",
-  },
-  {
-    id: "p0p0p0",
-    src: "/images/14.jpg",
-    tag: "food",
-  },
-  {
-    id: "h8h8h8",
-    src: "/images/15.jpg",
-    tag: "food",
-  },
-  {
-    id: "n7n3g3",
-    src: "/images/16.jpg",
-    tag: "pet",
-  },
-];
+import { image } from "@/utils/bluredData";
 
 export default function Home() {
   const [user, setUser] = useState({});
@@ -113,13 +31,13 @@ export default function Home() {
     else setImages(image);
   }, [search]);
 
-  // const isTouchDevice = () => {
-  //   if ("ontouchstart" in typeof window) {
-  //     return true;
-  //   }
-  //   return false;
-  // };
-  // const backendForDND = isTouchDevice() ? TouchBackend : HTML5Backend;
+  const isTouchDevice = () => {
+    if ("ontouchstart" in window) {
+      return true;
+    }
+    return false;
+  };
+  const backendForDND = isTouchDevice() ? TouchBackend : HTML5Backend;
 
   const moveImage = (dragIndex, hoverIndex) => {
     const draggedImage = images[dragIndex];
@@ -140,7 +58,7 @@ export default function Home() {
     return (
       <main className="flex min-h-screen flex-col items-center  p-4 md:p-10 gap-6 lg:gap-10 bg-gradient-to-r from-blue-200 via-rose-200 to-sky-500 ">
         <div className=" flex justify-between lg:block w-full relative">
-          <h1 className="text-left font-bold text-2xl md:text-4xl ">
+          <h1 className="text-left font-bold text-2xl md:text-4xl text-rose-700 capitalize">
             HNG Image Gallery
           </h1>
           <nav className="flex lg:absolute top-2 right-5 items-center">
@@ -185,8 +103,8 @@ export default function Home() {
           />
           <BsSearch color="black" size={25} className="cursor-pointer" />
         </div>
-        <DndProvider backend={HTML5Backend}>
-          <ImageList images={images} moveImage={moveImage} />
+        <DndProvider backend={backendForDND}>
+          <ImageList images={images} moveImage={moveImage} user={user} />
         </DndProvider>
       </main>
     );
