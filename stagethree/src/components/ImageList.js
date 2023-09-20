@@ -65,7 +65,7 @@ const ImageMove = ({ image, index, moveImage, user }) => {
     <div
       ref={ref}
       style={{ opacity: isDragging ? 0.5 : 1, cursor: user && "move" }}
-      className={`relative w-[100px] h-[100px]  md:w-[150px] md:h-[150px]  lg:w-[300px] lg:h-[300px] xl:w-[350px] xl:h-[350px]  ${
+      className={`relative w-[100px] h-[100px]  md:w-[150px] md:h-[150px]  lg:w-[300px] lg:h-[300px]   ${
         isDragging && "rounded-[20px] border"
       }`}
     >
