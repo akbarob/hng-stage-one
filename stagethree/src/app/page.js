@@ -32,10 +32,12 @@ export default function Home() {
   }, [search]);
 
   const isTouchDevice = () => {
-    if ("ontouchstart" in window) {
-      return true;
+    if (typeof window === "object") {
+      if ("ontouchstart" in window) {
+        return true;
+      }
+      return false;
     }
-    return false;
   };
   const backendForDND = isTouchDevice() ? TouchBackend : HTML5Backend;
 
